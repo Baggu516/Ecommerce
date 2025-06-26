@@ -11,28 +11,28 @@ const Products = () => {
       name: 'Tesla Model X Miniature',
       price: 4999,
       rating: 4.5,
-      image: './public/car1.jpg'
+      image: '/car1.jpg'
     },
     {
       _id: '2',
       name: 'BMW M3 Die-Cast',
       price: 2599,
       rating: 4.8,
-      image: '/public/car2.jpg'
+      image: '/car2.jpg'
     },
     {
       _id: '3',
       name: 'Lamborghini Aventador Toy',
       price: 6999,
       rating: 4.9,
-      image: '/public/car3.jpg'
+      image: '/car3.jpg'
     },
     {
       _id: '4',
       name: 'Audi R8 Car Replica',
       price: 3499,
       rating: 4.7,
-      image: '/public/car4.jpg'
+      image: '/car4.jpg'
     }
   ];
 
