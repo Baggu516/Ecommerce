@@ -34,6 +34,7 @@ app.use('/api/auth', authRoutes);        // Login/Signup
 app.use('/api/products', productRoutes); // Product CRUD
 app.use('/api/orders', orderRoutes);     // Order placement and listing
 
+
 // Root route for test
 app.get('/', (req, res) => {
   res.send('🚀 Server is running...');
