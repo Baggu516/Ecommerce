@@ -19,7 +19,8 @@ router.post('/', async (req, res) => {
 router.get('/user/:id', async (req, res) => {
   try {
     const userId = req.params.id;
-    const orders = await Order.find({ userId }).populate('productId');
+    console.log("userId",userId)
+    const orders = await Order.find({ userId });
     res.json(orders);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch user orders' });
