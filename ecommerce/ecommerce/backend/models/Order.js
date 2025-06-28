@@ -7,7 +7,6 @@ const OrderSchema = new mongoose.Schema({
   address:String,
   userId:String,
   total:String
-
 });
 
 
