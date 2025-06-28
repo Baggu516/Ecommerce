@@ -51,7 +51,7 @@ const UsersPage = () => {
                       />
                     </td>
                     <td className="py-2 px-4">₹{order.product.price}</td>
-                    <td className="py-2 px-4">⭐ {order.product.rating}</td>
+                    <td className="py-2 px-4">{order.product.rating}</td>
                     <td className="py-2 px-4">{new Date(order.date).toLocaleDateString()}</td>
                   </tr>
                 ))}

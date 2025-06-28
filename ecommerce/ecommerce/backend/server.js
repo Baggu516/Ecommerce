@@ -9,26 +9,44 @@ const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
 
-// Connect MongoDB
+// ============ Middleware ============
+app.use(cors({
+  origin: 'http://localhost:3000', // Limit to your frontend during dev
+  credentials: true,
+}));
+app.use(express.json()); // Parses incoming JSON requests
+
+// ============ MongoDB Connection ============
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(() => console.log('✅ MongoDB connected'))
-.catch(err => console.error('❌ MongoDB connection failed:', err));
+.catch(err => {
+  console.error('❌ MongoDB connection failed:', err.message);
+  process.exit(1); // Exit process if DB fails to connect
+});
 
-// API Routes
-app.use('/api/users', userRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/products', productRoutes);
+// ============ Routes ============
+app.use('/api/users', userRoutes);       // User management (profile, update)
+app.use('/api/auth', authRoutes);        // Login/Signup
+app.use('/api/products', productRoutes); // Product CRUD
+app.use('/api/orders', orderRoutes);     // Order placement and listing
 
+// Root route for test
+app.get('/', (req, res) => {
+  res.send('🚀 Server is running...');
+});
 
-// Start server
-app.listen(5000, () => {
-  console.log('🚀 Server running at http://localhost:5000');
+// ============ Global Error Handler ============
+app.use((err, req, res, next) => {
+  console.error('❌ Uncaught Error:', err.stack);
+  res.status(500).json({ message: 'Internal Server Error' });
+});
+
+// ============ Start Server ============
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

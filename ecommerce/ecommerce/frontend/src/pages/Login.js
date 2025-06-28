@@ -22,34 +22,44 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-100 to-pink-100">
-      <form onSubmit={handleSubmit} className="bg-white p-10 rounded-2xl shadow-lg w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-purple-800 mb-6">Welcome Back!</h2>
+    <div
+      className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center"
+      style={{ backgroundImage: "url('./img.jpg')" }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white/30 backdrop-blur-md shadow-xl rounded-2xl px-10 py-12 w-full max-w-md"
+      >
+        <h2 className="text-4xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-r from-purple-700 via-pink-600 to-blue-500 mb-8">
+          Welcome Back
+        </h2>
         <input
           type="email"
           name="email"
           placeholder="Email"
-          className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
           onChange={handleChange}
           required
+          className="w-full px-4 py-3 mb-4 rounded-xl border border-gray-300 bg-white/80 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
         <input
           type="password"
           name="password"
           placeholder="Password"
-          className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
           onChange={handleChange}
           required
+          className="w-full px-4 py-3 mb-6 rounded-xl border border-gray-300 bg-white/80 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
         <button
           type="submit"
-          className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
+          className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold rounded-xl hover:scale-105 transition-transform"
         >
           Login
         </button>
-        <p className="mt-4 text-center text-sm">
+        <p className="mt-6 text-center text-sm text-gray-100 drop-shadow">
           Don’t have an account?{' '}
-          <a href="/signup" className="text-purple-600 font-semibold hover:underline">Sign Up</a>
+          <a href="/signup" className="font-semibold text-purple-200 hover:underline">
+            Sign Up
+          </a>
         </p>
       </form>
     </div>

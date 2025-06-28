@@ -22,14 +22,19 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-100 to-purple-100">
-      <form onSubmit={handleSubmit} className="bg-white p-10 rounded-2xl shadow-lg w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-purple-800 mb-6">Create Account</h2>
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center p-4"
+      style={{ backgroundImage: "url('./sign.jpg')" }}
+    >
+      <form onSubmit={handleSubmit} className="bg-white/30 backdrop-blur-md p-10 rounded-2xl shadow-xl w-full max-w-md">
+        <h2 className="text-4xl font-bold text-transparent text-center bg-clip-text bg-gradient-to-r from-purple-700 via-pink-600 to-blue-500 mb-6">
+          Create Account
+        </h2>
         <input
           type="text"
           name="name"
           placeholder="Full Name"
-          className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+          className="w-full px-4 py-2 mb-4 border rounded-md bg-white/80 focus:outline-none focus:ring-2 focus:ring-purple-400"
           onChange={handleChange}
           required
         />
@@ -37,7 +42,7 @@ const Signup = () => {
           type="email"
           name="email"
           placeholder="Email"
-          className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+          className="w-full px-4 py-2 mb-4 border rounded-md bg-white/80 focus:outline-none focus:ring-2 focus:ring-purple-400"
           onChange={handleChange}
           required
         />
@@ -45,19 +50,21 @@ const Signup = () => {
           type="password"
           name="password"
           placeholder="Password"
-          className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+          className="w-full px-4 py-2 mb-4 border rounded-md bg-white/80 focus:outline-none focus:ring-2 focus:ring-purple-400"
           onChange={handleChange}
           required
         />
         <button
           type="submit"
-          className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
+          className="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white py-2 rounded-md font-medium hover:scale-105 transition-transform"
         >
           Sign Up
         </button>
-        <p className="mt-4 text-center text-sm">
+        <p className="mt-4 text-center text-sm text-gray-100 drop-shadow">
           Already have an account?{' '}
-          <a href="/" className="text-purple-600 font-semibold hover:underline">Login</a>
+          <a href="/" className="text-purple-200 font-semibold hover:underline">
+            Login
+          </a>
         </p>
       </form>
     </div>

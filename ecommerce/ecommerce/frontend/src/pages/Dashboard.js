@@ -1,53 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [activeButton, setActiveButton] = useState(null);
+
+  const buttons = [
+    { name: "Users", route: "/users" },
+    { name: "Products", route: "/products" },
+    { name: "Orders", route: "/orders" },
+    { name: "Admin", route: "/admin-login" },
+  ];
+
+  const handleClick = (route, name) => {
+    setActiveButton(name);
+    navigate(route);
+  };
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Background video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
-      >
-        <source src="/pages/video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <div
+      className="min-h-screen relative bg-cover bg-center font-[Orbitron] overflow-hidden"
+      style={{ backgroundImage: "url('/dash1.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-black/60 z-0" />
 
-      {/* Content overlay */}
-      <div className="relative z-10 bg-white/70 backdrop-blur-md min-h-screen flex flex-col items-center justify-center p-6">
-        <h1 className="text-4xl font-bold text-purple-700 mb-10">
-          Welcome to Your Dashboard
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center">
+        <h1 className="text-5xl text-white font-bold mb-12 animate-pulse drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">
+          Control Center
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-xl">
-          <button
-            onClick={() => navigate("/users")}
-            className="p-6 bg-blue-500 hover:bg-blue-600 text-white text-xl rounded-xl shadow-lg transition"
-          >
-            👤 Users
-          </button>
-          <button
-            onClick={() => navigate("/products")}
-            className="p-6 bg-green-500 hover:bg-green-600 text-white text-xl rounded-xl shadow-lg transition"
-          >
-            🛍️ Products
-          </button>
-          <button
-            onClick={() => navigate("/orders")}
-            className="p-6 bg-yellow-500 hover:bg-yellow-600 text-white text-xl rounded-xl shadow-lg transition"
-          >
-            📦 Orders
-          </button>
-          <button
-            onClick={() => navigate("/admin-login")}
-            className="p-6 bg-purple-500 hover:bg-purple-600 text-white text-xl rounded-xl shadow-lg transition"
-          >
-            🛠️ Admin
-          </button>
+          {buttons.map(({ name, route }) => (
+            <button
+              key={name}
+              onClick={() => handleClick(route, name)}
+              className={`p-6 w-full text-xl font-semibold rounded-xl 
+                backdrop-blur-xl border transition-all duration-300 transform 
+                ${activeButton === name
+                  ? "bg-gradient-to-r from-green-400 to-blue-500 text-white scale-105"
+                  : "bg-white/10 text-white border-white/30 hover:border-pink-400 hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:scale-105"}`}
+            >
+              {name}
+            </button>
+          ))}
         </div>
       </div>
     </div>
